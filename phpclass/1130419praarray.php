@@ -94,5 +94,32 @@
     
     echo "</table>";
     ?>
+
+    <h2>用foreach找出 500年內的閏年</h2>
+    <h2>儲存陣列在用迴圈印出來</h2>
+    <?php
+    $leaps=[];
+    $year=2024;
+    for($i=$year ; $i<($year+500) ;$i++){
+        if($i%4 == 0 && $i%100!=0 || $i%400 == 0){
+            $leaps[]=$i;
+        }
+    }
+    echo "<h3>自 $year 至" .($year+500). "止，有以下閏年:</h3>";
+    foreach($leaps as $leap){
+        echo $leap ;
+        echo '<br>';
+
+    }
+    echo '<hr>';
+    echo "共有" .count($leaps). "個閏年";
+
+
+
+
+
+
+    ?>
+
 </body>
 </html>

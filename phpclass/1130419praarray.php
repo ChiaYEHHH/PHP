@@ -8,7 +8,10 @@
         table{
             border-collapse:collapse;
         }
-        tr , td{
+        tr{
+            border:2px dashed green;
+        }
+        td{
             border:2px dashed green;
         }
 
@@ -44,19 +47,18 @@
     }
     echo "<table>";
     $i=1;
-    foreach($nine9 as $nine){
-        echo $nine;
-        if($i%9 == 0){
-            echo "<br>";
-        }
-        $i++;
-    }
+    // foreach($nine9 as $nine){
+    //     echo $nine;
+    //     if($i%9 == 0){
+    //         echo "<br>";
+    //     }
+    //     $i++;
+    // }
 
     foreach($nine9 as $n9 => $nine){
         echo $nine;
         if(($n9)%9==0){
             echo "<tr>";
-
         }
         echo "<td> $nine </td>";
         if(($n9+1)%9==0){
@@ -71,27 +73,29 @@
 
     <h2>成績陣列</h2>
     <?php
-    $subjects=['國文','英文','數學','地理','歷史'];
-    $name=['judy','amo0','john','peter','hebe'];
+    $subjects=['','國文','英文','數學','地理','歷史'];
     $score=[
-        ['95','64','70','90','84'],
-        ['88','78','54','81','71'],
-        ['45','60','68','70','62'],
-        ['59','32','77','54','42'],
-        ['71','62','80','62','64']];
+        'judy' => ['95','64','70','90','84'],
+        'amo' =>['88','78','54','81','71'],
+        'john' =>['45','60','68','70','62'],
+        'peter' =>['59','32','77','54','42'],
+        'hebe' =>['71','62','80','62','64']];
     
     echo "<table>";
-    
+    echo "<tr>";
         foreach ($subjects as $sj) {
-            echo "<tr>";
-            echo $sj;
-            // echo "<td> $sj </td>";
-            echo "</tr>";
+            echo "<td> $sj </td>";
         }
-    // echo "</tr>";
+        echo "</tr>";
+        foreach($score as $n => $s){
+        echo "<tr>";
+        echo "<td> $n </td>";
 
-    
-    
+        foreach($s as $ss){
+            echo "<td> $ss </td>";
+        }
+        echo "</tr>";
+    }
     echo "</table>";
     ?>
 
@@ -113,13 +117,9 @@
     }
     echo '<hr>';
     echo "共有" .count($leaps). "個閏年";
-
-
-
-
-
-
-    ?>
+  
+?>
+   
 
 </body>
 </html>

@@ -22,10 +22,18 @@
     <h2>線上月曆製作</h2>
     <?php
     echo date("Y年m月");
-    echo "<table>";
-    $week=["日","一","二","三","四","五","六"];
-    echo "<tr>";
     
+    $week=["日","一","二","三","四","五","六"];
+    // $firstday=strtotime(date("Y-m-1"));
+    $firstweekstartday=date("w",date("d"));
+    echo "第一周開始是第" .$firstweekstartday ."日";
+    $days=date("t",date("d"));
+    $lastday=strtotime(date("Y-m-$days"));
+    echo "<br>";
+    echo "最後一天是".date("Y-m-d",$lastDay);
+
+    echo "<table>";
+    echo "<tr>";
     foreach($week as $w){
         echo "<td>$w</td>";
 
@@ -35,10 +43,21 @@
     for($i=0 ; $i<6 ; $i++){
         echo "<tr>";
         for($j=0 ; $j<7 ;$j++){
-            echo "<td>";
-            echo "  ";
+            if($i==0 && $j>=$firstweekstartday){
+                echo "<td>";
+                echo $i*7+$j-($firstweekstartday-1);
+                echo "</td>";
+            }else if($i>0){
+                echo "<td>";
+                echo $i*7+$j-($firstweekstartday-1);
+                echo "</td>";
 
-            echo "</td>";
+            }else{
+                echo "<td></td>";
+
+            }
+            
+            
 
         }
         echo "</tr>";

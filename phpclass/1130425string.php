@@ -60,11 +60,17 @@
     <?php
 
         $s="學會PHP網頁程式設計，薪水會加倍，工作會好找";
-        $s=str_replace('程式設計',"<span style='color: red ; font-size : 32px'>程式設計</span>",$s);
-    
+        // $s=str_replace('程式設計',"<span style='color: red ; font-size : 32px'>程式設計</span>",$s);
+        $key='網頁';
+        $color='pink';
+        $size='24px';
+        // key , color , font-size 拉出來另外設定
+        $s=str_replace($key,"<span style='color:$color;font-size:$size'>$key</span>",$s);
+
         echo $s;
 
     ?>
+    
     <p>
         &nbsp;
         &nbsp;

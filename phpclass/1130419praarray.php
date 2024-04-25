@@ -13,6 +13,7 @@
         }
         td{
             border:2px dashed green;
+            
         }
 
     </style>
@@ -112,14 +113,39 @@
     echo "<h3>自 $year 至" .($year+500). "止，有以下閏年:</h3>";
     foreach($leaps as $leap){
         echo $leap ;
-        echo '<br>';
+        echo ' / ';
 
     }
     echo '<hr>';
     echo "共有" .count($leaps). "個閏年";
   
 ?>
-   
+<h2>在不產生新陣列的狀況下，將一個陣列的元素順序反轉(利用迴圈)</h2>
+<?php
+$a=[2,4,6,1,8];
 
+echo "原陣列為:[".join(',',$a)."]<br>";
+// ceil(天花板)小數點進位  floor(地板)小數點退位 
+for ($i=0 ; $i< ceil(count($a)/2); $i++){
+    $j=$a[$i];
+    $a[$i]=$a[count($a)-1-$i];
+    $a[count($a)-1-$i]=$j;
+}
+echo "for迴圈交換後為:[".join(',',$a)."]<br>";
+
+// array_reverse()內建的交換函式
+echo "函式再交換後為:[".join(',',array_reverse($a))."]<br>";
+
+
+
+
+
+?>
+   
+<p>$npsb</p>
+<p>$npsb</p>
+<p>$npsb</p>
+<p>$npsb</p>
+<p>$npsb</p>
 </body>
 </html>

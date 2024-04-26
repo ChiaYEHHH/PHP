@@ -23,46 +23,46 @@
     <?php
     echo date("Y年m月");
     // Y年 ,m月,d日,w星期幾0(日)-6(六),t月份的天數,l星期幾(英文),,,
-    $week=["日","一","二","三","四","五","六"];
-    $firstday=strtotime(date("Y-m-1"));
-    $firstweekstartday=date("w",$firstday);
-    echo "第一周開始是第" .$firstweekstartday ."日";
-    $days=date("t",$firstday);
-    $lastday=strtotime(date("Y-m-$days"));
-    echo "<br>";
-    echo "最後一天是".date("Y-m-d-l",$lastday);
+    // $week=["日","一","二","三","四","五","六"];
+    // $firstday=strtotime(date("Y-m-1"));
+    // $firstweekstartday=date("w",$firstday);
+    // echo "第一周開始是第" .$firstweekstartday ."日";
+    // $days=date("t",$firstday);
+    // $lastday=strtotime(date("Y-m-$days"));
+    // echo "<br>";
+    // echo "最後一天是".date("Y-m-d-l",$lastday);
 
-    echo "<table>";
-    echo "<tr>";
-    foreach($week as $w){
-        echo "<td>$w</td>";
+    // echo "<table>";
+    // echo "<tr>";
+    // foreach($week as $w){
+    //     echo "<td>$w</td>";
 
-    }
-    echo "</tr>";
+    // }
+    // echo "</tr>";
 
-    for($i=0 ; $i<6 ; $i++){
-        echo "<tr>";
-        for($j=0 ; $j<7 ;$j++){
-            if($i==0 && $j>=$firstweekstartday){
-                echo "<td>";
-                echo $i*7+$j-($firstweekstartday-1);
-                echo "</td>";
-            }else if($i>0){
-                echo "<td>";
-                if($i*7+$j-($firstweekstartday-1)<=$days){
-                echo $i*7+$j-($firstweekstartday-1);
+    // for($i=0 ; $i<6 ; $i++){
+    //     echo "<tr>";
+    //     for($j=0 ; $j<7 ;$j++){
+    //         if($i==0 && $j>=$firstweekstartday){
+    //             echo "<td>";
+    //             echo $i*7+$j-($firstweekstartday-1);
+    //             echo "</td>";
+    //         }else if($i>0){
+    //             echo "<td>";
+    //             if($i*7+$j-($firstweekstartday-1)<=$days){
+    //             echo $i*7+$j-($firstweekstartday-1);
 
-                }else{
-                    echo "&nbsp;";
-                }
-                echo "</td>";
+    //             }else{
+    //                 echo "&nbsp;";
+    //             }
+    //             echo "</td>";
 
-            }else{
-                echo "<td></td>";
-            }
-        }
-        echo "</tr>";
-    }
+    //         }else{
+    //             echo "<td>owo</td>";
+    //         }
+    //     }
+    //     echo "</tr>";
+    // }
 
 
 
@@ -72,29 +72,96 @@
 
     echo "<table>";
 
-    echo "<tr>";
-    foreach($week as $w ){
-        echo "<td>$w</td>";
-    }
-    echo "</tr>";
+    // echo "<tr>";
+    // foreach($week as $w ){
+    //     echo "<td>$w</td>";
+    // }
+    // echo "</tr>";
+    $firstday=strtotime(date("Y-m-1"));
     $days = date("t", $firstday);
-    
-
-    for ($i = 1; $i <= $days; $i++) {
-        
+    for ($i = 1; $i <= $days; $i++) {   
         $currentDay = strtotime(date("Y-m-$i"));
-        $currentWeekDay = date("w", $currentDay);                                         
-        
-        
+        $currentWeekDay = date("w", $currentDay);  
         if ($currentWeekDay == 0) {
-            echo '</tr>';
+            if ($i != 1) {
+                echo '</tr>';
+            }
             echo '<tr>';
         }
-        echo '<td>' . $i . '</td>';
+        
+        if ($i < $currentWeekDay) {
+            echo '<td>owo</td>';  
+        } else {
+            echo '<td>' . $i . '</td>';
+        }
     }
-    echo '</tr>';
+
+
+        // switch{
+        //     case($currentWeekDay == 0){
+        //         echo '</tr>';
+        //         echo '<tr>';
+        //     }
+        //     case($i<$currentWeekDay){
+        //         echo '<td>owo</td>';  
+        //     }else{
+        //         echo '<td>' . $i . '</td>';
+
+        //     }
+        // }
+        
+        // if ($currentWeekDay == 0) {
+        //     echo '</tr>';
+        //     echo '<tr>';
+        // } 
+        //     echo '<td>' . $i . '</td>';   
+    // }
+    // echo '</tr>';
     echo "</table>";
 
+    ?>
+    <hr>
+
+    <?php
+    $year=2024;
+    $mon=4;
+    
+    $day1=strtotime("$year-$mon-01");
+    echo "當月第一天". date("Y-m-d", $day1)."<br>";
+    
+    $wd1 = date("w", $day1);
+    
+    echo "當月第一天是星期" .$wd1. "<br>";
+    $days=1;
+    $md= date("t", $day1);
+    echo "當月天數" .$md. "天";
+    echo "<table>";
+    for($i=1 ; $i<=$md ; $i++){
+        if($i < $md){
+            // 印出1號之前的格子
+            echo "<td>owo</td>";
+        }else if($i==$md){
+            // 印出個子相對應的日期
+        }
+    }
+
+
+
+    // for($i=0 ; $i<6 ; $i++){
+    //     echo "<tr>";
+    //     for($j=0 ; $j<7 ; $j++){
+    //         echo "<td>owo</td>";
+    //         if($j==$wd1){
+    //             echo "<td> $days </td>";
+    //             $days++;
+    //         }
+    //     }
+    //     echo "</tr>";
+    // }
+    
+
+
+    echo "</table>";
     ?>
 
 

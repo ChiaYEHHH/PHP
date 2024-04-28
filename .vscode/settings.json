@@ -1,0 +1,6 @@
+{
+    "files.autoSave": "onWindowChange",
+    "editor.fontSize": 22,
+    "editor.wordWrap": "on",
+    "liveServer.settings.CustomBrowser": "chrome"
+}

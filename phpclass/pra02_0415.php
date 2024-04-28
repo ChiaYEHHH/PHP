@@ -78,20 +78,20 @@
         <p>例:伊朗向以色列發動襲擊戰爭升級擔憂加劇 · 蘇文強蘇海金案宣判新加坡如何避免淪為富人洗錢天堂。</p>
 
 <?php
-$str='例:伊朗向以色列發動襲擊戰爭升級擔憂加劇 · 蘇文強蘇海金案宣判新加坡如何避免淪為富人洗錢天堂。';
+$str="例:伊朗向以色列發動襲擊戰爭升級擔憂加劇 · 蘇文強蘇海金案宣判新加坡如何避免淪為富人洗錢天堂。";
 $target="蘇文強";
 
 $position=0;
-while($target!=mb_substr($str,$position,mp_strlen($target))){
-    echo 'p='.$position;
-    echo "substr =" . mp_substr($str, $position,my_striem($target));
-    echo '<br>';
+while($target!=mb_substr($str,$position,mb_strlen($target))){
+    // echo 'p='.$position;
+    // echo ", substr =" . mb_substr($str, $position, mb_strlen($target));
+    // echo '<br>';
     $position=$position+1;
 
 }
 
 //  for($i=0 ; )
-echo $target . "的位置在" $position;
+echo $target . "的位置在" .$position;
 echo "<br>";
 echo mb_strpos($str,$target);
 ?>

@@ -4,6 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>流程結構練習</title>
+    <style>
+        table{
+            
+            border-collapse:collapse;
+            border:3px solid darkblue;
+        }
+        td {
+            border:2px dashed lightblue;
+            color:gray;
+            text-align:center;
+        }
+        .nine99 tr:nth-child(1) td,
+        .nine99 td:nth-child(1){
+            background-color:lightpink;
+            color:black;
+        }
+    </style>
+    
 </head>
 <body>
     <a href="index.html">回首頁</a>
@@ -96,6 +114,8 @@
         
     }
     echo "<br>";
+    echo "<hr>";
+
     // ABCD等級改字體大小顏色
     // if ($level=='A' || $level=='B' || $level=='C' || $level=='D'){
     // echo "<span style='font-size:32px;color:green'>";
@@ -157,18 +177,18 @@
     // }
 // 老師三版
     if($year%4 ==0 && $year %100!=0 || $year%400==0){
-        echo $year . "是閏年!三版";
+        echo $year . "是閏年!三版<br>";
     }else{
-        echo $year . "是平年!三版";
+        echo $year . "是平年!三版<br>";
     }
 // 自己版
-    for($year=2000 ; $year<=2024 ; $year=$year+4){
-        if($year %100!=0 || $year%400==0){
-            echo $year . "是閏年!自己版";
-            echo '<br>';
+    for($year=2390 ; $year<=2404 ; $year++){
+        if($year%4 ==0 && $year %100!=0 || $year%400==0){
+            echo $year . "是閏年!自己版<br>";
+            
         }else{
-            echo $year . "是平年!自己版";
-            echo '<br>';
+            echo $year . "是平年!自己版<br>";
+    
         }
     }
 
@@ -191,14 +211,130 @@
         echo $i*10;
         echo ',';
     }
-    echo '<hr>';
-
-
-    for()
-
-
-    
+    echo '<hr>';   
 ?>
+<h2>0427重新複習</h2>
+<?php
+echo "判斷成績及格學生";
+echo "給定一個成績數字，判斷是否及格(60)分";
+
+$score=153;
+echo "成績:" .$score."<br>";
+if ($score <=100 && $score >=60) {
+  echo "yes!";
+} elseif ($score>=0 && $score<60) {
+  echo "no";
+} else {
+  echo "ohoh!";
+}
+?>
+<h2>分配成績等級</h2>
+    <h3>根據成績所在的區間，給定等級,依據學生成績等級給予評價(if elseif)</h3>
+    <ul>
+        <li>00 ~ 59 => C</li>
+        <li>60 ~ 79 => B</li>
+        <li>80 ~ 100 => A</li>
+    </ul>
+<?php
+$score=88;
+echo "成績: $score <br>";
+$level='';
+if($score <= 100 && $score >= 80){
+$level='A';
+echo "level: $level 最棒";
+}elseif($score>=60 && $score<80){
+$level="B";
+echo "level: $level 很棒";
+}elseif($score>=0 && $score<60){
+$level="C";
+echo "level: $level 傻逼";
+}else{
+echo "輸入錯誤";
+}
+echo $level;
+?>
+<hr>
+<h3>根據成績所在的區間，給定等級,依據學生成績等級給予評價(switch case)</h3>
+    <ul>
+        <li>00 ~ 59 => C</li>
+        <li>60 ~ 79 => B</li>
+        <li>80 ~ 100 => A</li>
+    </ul>
+<?php
+// $score=55;
+// echo "成績:".$score;
+echo "level:$level <br>";
+$words='';
+switch($level){
+    case "A":
+        $words="你很棒";
+        echo "評語:$words";
+        break;
+    case "B":
+        $words="你不錯";
+        echo "評語:$words";
+        break;
+    case "C":
+        $words="你好廢";
+        echo "評語:$words";
+        break;
+}
+
+?>
+<h2>閏年判斷，給定一個西元年份，判斷是否為閏年</h2>
+<ul>
+    <li>公元年分除以4不可整除，為平年。</li>
+    <li>公元年分除以4可整除但除以100不可整除，為閏年。</li>
+    <li>公元年分除以100可整除但除以400不可整除，為平年。</li>
+</ul>
+<?php
+$year=2400;
+if($year%4 == 0 && $year%100 !=0 || $year%400 == 0){
+    echo $year."年為閏年";
+} else{
+    echo $year."年為平年";
+}
+
+?>
+<h2>九九乘法表</h2>
+<h4>以表格排列的九九乘法表</h4>
+<?php
+echo "<table>";
+for($i=1 ; $i<=9 ; $i++){
+    echo "<tr>";
+    for($j=1 ; $j<=9 ; $j++){
+        echo "<td>";
+        echo "$j * $i =".($j*$i);
+        echo "</td>";
+    }
+    echo "</tr>";
+}
+echo "</table>";
+?>
+<h4>以交叉計算結果呈現的九九乘法表</h4>
+<?php
+echo "<table class='nine99'>";
+for($i=0 ; $i<=9 ; $i++){
+    echo "<tr>";
+    for($j=0 ; $j<=9 ; $j++){
+        echo "<td>";
+        if($i==0 &&$j==0){
+            echo "O";
+        }elseif($i==0){
+            echo "$j";
+        }elseif($j==0){
+            echo "$i";
+        }else{
+            echo ($j*$i);
+        }
+        echo "</td>";
+    }
+    echo "</tr>";
+}
+echo "</table>";
+
+?>
+
 <p>&nbsp</p>
 <p>&nbsp</p>
 <p>&nbsp</p>

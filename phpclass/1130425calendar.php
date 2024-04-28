@@ -125,10 +125,9 @@
     <?php
     $year=2024;
     $mon=5;
-    
+    $week=["日","一","二","三","四","五","六"];
     $day1=strtotime("$year-$mon-01");
     echo "當月第一天". date("Y-m-d", $day1)."<br>";
-    
     $wd1 = date("w", $day1);
     
     echo "當月第一天是星期" .$wd1. "<br>";
@@ -136,18 +135,24 @@
     $md= date("t", $day1);
     echo "當月天數" .$md. "天";
     echo "<table>";
+    echo "<tr>";
+    foreach($week as $w){
+        echo "<td>$w</td>";
+
+    }
+    echo "</tr>";
     for($i=0 ; $i<=$md ; $i++){
         echo "<tr>";
-        
         if($i < $wd1){
             // 印出1號之前的格子
-            echo "<td>owo</td>";
-        }else if($i<=$md){
-            // 印出個子相對應的日期
-            echo "<td>$days</td>";
-            $days++;
+            echo "<td>QAQ</td>";
+            if($i>=$wd1){
+                // 印出個子相對應的日期
+                echo $days ;
+                $days++;
+            }
         }
-        if($i % 7 === 0){
+        if($i % 7 == 0){
             echo "</tr>";
             // echo "<tr>";
     

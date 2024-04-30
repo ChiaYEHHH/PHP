@@ -141,25 +141,27 @@
 
     }
     echo "</tr>";
+    echo "<tr>";
     for($i=0 ; $i<=$md ; $i++){
-        echo "<tr>";
+        
         if($i < $wd1){
             // 印出1號之前的格子
             echo "<td>QAQ</td>";
-            if($i>=$wd1){
+        }elseif($i>=$wd1){
                 // 印出個子相對應的日期
-                echo $days ;
-                $days++;
-            }
+                echo "<td>$i</td>" ;
+                
         }
-        if($i % 7 == 0){
+    }
+        if($i % 7 === 0){
+            // 週六換行
             echo "</tr>";
             // echo "<tr>";
     
             }
         
 
-    }echo "</tr>";
+    
 
 
 
@@ -178,6 +180,58 @@
 
 
     echo "</table>";
+    ?>
+
+    <h4>行事曆(div版)</h4>
+    <style>
+        .block{
+            width:357px;
+            display:flex;
+            flex-wrap:wrap;
+        }
+        .item_block{
+            border:1px solid blue;
+            display:inline-block;
+            width:50px;
+            height:25px;
+            margin-left:-1px;
+            margin-top:-1px;
+        }
+        .item{
+            margin-left:-1px;
+            margin-top:-1px;
+            display:inline-block;
+            width: 50px;
+            height: 50px;
+            border:1px solid pink;
+            
+        }
+    </style>
+    <?php
+    $mon_d=[];
+    for($i=0 ;$i<42 ; $i++){
+
+        // echo "<div class='item'></div>";
+        $mon_d[]=date("d",strtotime("+$i days", strtotime(date("Y-m-d"))) );
+    
+        
+    }
+    echo "<div class='block'>";
+        echo "<div class='item_block'>日</div>";
+        echo "<div class='item_block'>一</div>";
+        echo "<div class='item_block'>二</div>";
+        echo "<div class='item_block'>三</div>";
+        echo "<div class='item_block'>四</div>";
+        echo "<div class='item_block'>五</div>";
+        echo "<div class='item_block'>六</div>";
+
+        foreach($mon_d as $day){
+            echo"<div class='item'>$days</div>";
+        }
+
+    
+    echo "</div>";
+
     ?>
 
 
